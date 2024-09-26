@@ -1,0 +1,106 @@
+<!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<head>
+    <script src="https://raw.githack.com/creativetimofficial/argon-dashboard/master/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.3.1/css/all.min.css" rel="stylesheet">
+</head> -->
+
+<body>
+    <div class="main-content">
+        <app-sidebar></app-sidebar>
+        <div id="cover">
+            <!-- Table -->
+            <h4 class="mb-5" style="padding-top: 70px"><i class="fa fa-chevron-circle-left" (click)="onGolistProject()"></i> Detail Project {{projectModel.projectName}}</h4>
+            <div class="row">
+
+                <div class="col">
+                    <div class="card shadow">
+                        <div class="card-header border-0">
+                            <div class="panel-body" style="overflow-x:auto;">
+                                <table class="table table-striped">
+                                    <thead class="text-left">
+                                        <tr>
+                                            <th scope="col">Prosentase Project</th>
+                                            <td>:</td>
+                                            <td>{{projectModel.prosentaseProject*100 | number : '1.2-2'}}%</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="col">Status Project</th>
+                                            <td>:</td>
+                                            <td>{{projectModel.statusProject}}</td>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="table-responsive" [hidden]="releaseModel.length===0">
+                            <table class="table align-items-center table-flush" id="excel-table">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th>Release Code</th>
+                                        <th>Release Name</th>
+                                        <th>Status</th>
+                                        <th>Stage</th>
+                                        <th>Prosentase Release</th>
+                                        <th>Detail</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let release of releaseModel; let i = index">
+                                        <td>{{release.releaseCode}}</td>
+                                        <td>{{release.releaseName}}</td>
+                                        <td>{{release.status}}</td>
+                                        <td>{{release.stage}}</td>
+                                        <td>{{release.prosentaseRelease*100 | number : '1.2-2'}}%</td>
+                                        <td>
+                                            <button (click)="getTaskByReleaseId(release.id)" class="btn btn-outline-success btn-sm" data-toggle="tooltip" data-placement="bottom" title="Detail"><i
+                                              class="fa fa-eye"></i></button>&nbsp;
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="table-responsive" [hidden]="taskModel.length===0">
+                            <table class="table align-items-center table-flush" id="excel-table">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th>Task Code</th>
+                                        <th>Task Name</th>
+                                        <th>Prosentase Task</th>
+                                        <th>Assign to</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let task of taskModel; let i = index">
+                                        <td>{{task.taskCode}}</td>
+                                        <td>{{task.taskName}}</td>
+                                        <td>{{task.taskProsentase*100 | number : '1.2-2'}}%</td>
+                                        <td>{{task.assignedTo.username}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="row align-items-center justify-content-xl-between">
+            <div class="col-xl-6 m-auto text-center">
+                <div class="copyright">
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://raw.githack.com/creativetimofficial/argon-dashboard/master/assets/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="https://raw.githack.com/creativetimofficial/argon-dashboard/master/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
